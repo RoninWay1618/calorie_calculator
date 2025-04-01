@@ -18,6 +18,11 @@ public class UserServiceImpl implements UserService {
         this.userRepository = userRepository;
     }
 
+    @Autowired
+    public void setUserRepository(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
     @Override
     @Transactional //  гарантирует, что группа операций будет выполнена как единое целое (транзакция) по принципу «всё или ничего»
     public void saveUser(User user) {

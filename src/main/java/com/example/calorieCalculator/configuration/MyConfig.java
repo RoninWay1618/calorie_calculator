@@ -25,13 +25,23 @@ public class MyConfig {
         try {
             dataSource.setDriverClass("org.postgresql.Driver"); // Драйвер для PostgreSQL
             dataSource.setJdbcUrl("jdbc:postgresql://localhost:5432/calorie_db"); // URL базы данных
-            dataSource.setUser("bestuser"); // Имя пользователя БД
-            dataSource.setPassword("bestuser"); // Пароль от БД
+            dataSource.setUser("postgres"); // Имя пользователя БД
+            dataSource.setPassword("password"); // Пароль от БД
 
         } catch (PropertyVetoException e) {
             throw new RuntimeException("Ошибка при настройке DataSource", e);
         }
         return dataSource;
+//        try {
+//            dataSource.setDriverClass("com.mysql.cj.jdbc.Driver");
+//            dataSource.setJdbcUrl("jdbc:mysql://localhost:3306/my_db?useSSL=false&serverTimezone=UTC");
+//            dataSource.setUser("bestuser");
+//            dataSource.setPassword("bestuser");
+//
+//        } catch (PropertyVetoException e) {
+//            throw new RuntimeException(e);
+//        }
+//        return dataSource;
     }
 
     @Bean
@@ -42,6 +52,7 @@ public class MyConfig {
 
         Properties props = new Properties();
         props.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect"); // Диалект PostgreSQL
+//        props.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
         props.setProperty("hibernate.show_sql", "true"); // Вывод SQL-запросов в консоль
         props.setProperty("hibernate.hbm2ddl.auto", "update"); // Автоматическое обновление схемы
 
